@@ -5,4 +5,5 @@ repos:
     - id: terraform_fmt
     - id: terraform_validate
     - id: terraform_tflint
-    - id: terraform_docs_without_aggregate_type_defaults
+    - id: terraform_docs
+      args: ['--sort-by-required']
