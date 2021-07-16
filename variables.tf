@@ -1,23 +1,19 @@
-### CCL required vairables ###
-
-variable "client" {
+variable "role" {
   type        = string
-  description = "(required) client / customer name"
+  description = "(Required) name of the role"
 }
 
-variable "enviroment" {
+variable "description" {
   type        = string
-  description = "(required) client / customer name"
+  description = "(Required) description of the role"
 }
 
-variable "extra_tags" {
+variable "azurerm_access" {
   type        = map(string)
-  description = "Extra tags to set on each created resource."
-  default     = {}
+  description = "map of access for Azure resources"
 }
 
-variable "custom_resource_name" {
-  type        = string
-  description = "(optional) allows user to provide a custom name for resoruces, if omitted module will genrate resrouce names "
-  default     = null
+variable "azuredevops_access" {
+  type        = map(any)
+  description = "map of access for Azure DevOps resources"
 }
