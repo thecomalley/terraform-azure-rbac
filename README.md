@@ -1,3 +1,41 @@
+# Module Overview
+This module is designed to create Azure AD security groups for Role based access control and grant those groups specific access to `azurerm` & `azuredevops` resources.
+
+Currently this module can only assign built-in roles 
+
+## Example usage
+azurerm & azuredevops access is granted via passing a map of `resources: roles` like below, with the `azurerm` resource being any azure resource id (subscription, resource group etc) and the `azuredevops` resource being projects.
+
+See the examples folder for passing a large mapping of roles and their respective accesses
+
+<br>
+
+```hcl
+module "rbac" {
+  source = "../../"
+
+  role        = "developers"
+  description = "thease users are developers"
+
+  azurerm_access = {
+    "resource_id" = "Azure built-in role"
+    "resource_id" = "Azure built-in role"
+
+  }
+
+  azuredevops_access = {
+    "project name" = "DevOps built-in role"
+    "project name" = "DevOps built-in role"
+  }
+}
+```
+
+<br>
+---
+
+# Terraform Docs
+Generated documentation by [terraform-docs](https://github.com/terraform-docs/terraform-docs)
+<!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 ## Requirements
 
 | Name | Version |
@@ -43,3 +81,4 @@ No modules.
 ## Outputs
 
 No outputs.
+<!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
