@@ -1,10 +1,13 @@
+terraform {
+  required_version = ">= 0.12.26"
+}
+
 module "azure_rbac" {
-  source = "../"
+  source   = "../"
+  for_each = local.rbac_roles
 
-  for_each    = local.rbac_roles
-  role        = each.key
-  description = each.value.description
-
+  role               = each.key
+  description        = each.value.description
   azurerm_access     = each.value.azurerm_access
   azuredevops_access = each.value.azuredevops_access
 }
@@ -47,19 +50,4 @@ locals {
       }
     }
   }
-}
-
-variable "dev_resources" {
-  type        = string
-  description = "The scope at which the Role Assignment applies to, such as /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333"
-}
-
-variable "staging_resources" {
-  type        = string
-  description = "The scope at which the Role Assignment applies to, such as /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333"
-}
-
-variable "prod_resources" {
-  type        = string
-  description = "The scope at which the Role Assignment applies to, such as /subscriptions/0b1f6471-1bf0-4dda-aec3-111122223333"
 }

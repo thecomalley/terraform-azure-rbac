@@ -7,5 +7,4 @@ repos:
     - id: terraform_fmt
     - id: terraform_tflint
       args: ['--args=--module']
-    - id: terraform_docs_replace
-      args: ['--sort-by required']
+    - id: terraform_docs

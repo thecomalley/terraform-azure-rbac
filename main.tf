@@ -7,8 +7,7 @@ resource "azuread_group" "main" {
 }
 
 resource "azurerm_role_assignment" "example" {
-  for_each = var.azurerm_access
-
+  for_each             = var.azurerm_access
   scope                = each.key
   role_definition_name = each.value
   principal_id         = azuread_group.main.id
